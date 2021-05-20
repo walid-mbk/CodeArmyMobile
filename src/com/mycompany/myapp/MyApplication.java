@@ -13,6 +13,7 @@ import com.codename1.ui.Toolbar;
 import java.io.IOException;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.io.NetworkEvent;
+import com.mycompany.gui.SignInForm;
 import com.mycompany.myapp.gui.Addmail;
 import com.mycompany.myapp.gui.ListMatiere;
 import java.io.IOException;
@@ -54,14 +55,14 @@ public class MyApplication {
             current.show();
             return;
         }
-        ListStage hi = new ListStage();   
-        ListEvenement hi2 = new ListEvenement(); 
-                 ListMatiere mat= new ListMatiere(hi2); 
-                         Addmail mail = new Addmail(hi2); 
+       // ListStage hi = new ListStage();   
+       ListEvenement hi2 = new ListEvenement(); 
+       // ListMatiere mat= new ListMatiere(hi2); 
+      //  Addmail mail = new Addmail(hi2); 
 
-
+  new SignInForm(theme).show();
         
-        mail.show();
+       
         
        
     }

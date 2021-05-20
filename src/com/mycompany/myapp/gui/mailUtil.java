@@ -6,7 +6,7 @@
 package com.mycompany.myapp.gui;
 
 
-import java.util.Properties;
+//import java.util.Properties;
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.Multipart;
@@ -24,7 +24,7 @@ import javax.mail.internet.MimeMultipart;
  */
 public class mailUtil {
      public static void sendMail(String recepient,String sender,String pass,String subject,String contenu) throws Exception {
-        System.out.println("Preparing to send email");
+      /*  System.out.println("Preparing to send email");
         Properties properties = new Properties();
 
         //Enable authentication
@@ -73,6 +73,6 @@ public class mailUtil {
         } catch (Exception ex) {
            ex.printStackTrace();
         }
-        return null;
+        return null;*/
     }
 }
