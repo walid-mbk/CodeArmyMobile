@@ -6,6 +6,7 @@
 package com.mycompany.myapp.gui;
 
 import com.codename1.components.SpanLabel;
+import com.codename1.notifications.LocalNotification;
 import com.codename1.ui.Button;
 import com.codename1.ui.Command;
 import com.codename1.ui.Container;
@@ -17,10 +18,10 @@ import com.codename1.ui.Form;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
-import com.mycompany.myapp.entities.Categorie;
+
 import com.mycompany.myapp.entities.Matiere;
-import com.mycompany.myapp.entities.Produit;
-import com.mycompany.myapp.services.serviceCat;
+
+
 import com.mycompany.myapp.services.ServiceMatiere;
 import java.util.ArrayList;
 
@@ -63,17 +64,17 @@ public class ListMatiere extends Form {
                        //   c3.add(cat2);
                         //c3.add(cat4);
        
-                         Button Delete =new Button("Delete","LoginButton");
-                        
+                         Button Delete =new Button("Delete");
+                         
                          Font materialFont = FontImage.getMaterialDesignFont();
 int size = Display.getInstance().convertToPixels(6, true);
                          materialFont = materialFont.derive(size, Font.BASELINE);
                       FontImage.setMaterialIcon(Delete, FontImage.MATERIAL_DELETE_FOREVER);
     
          c3.add(Delete);
-           
-                 Delete.getAllStyles().setBgColor(0xF36B08);
+            Delete.getAllStyles().setBgColor(0xF36B08);
             Delete.addActionListener(e -> {
+                
                Dialog alert = new Dialog("Warning");
                 SpanLabel message = new SpanLabel("Are you sure you want to delete your matiere?\nThis action once done cannot be reverted!");
                 alert.add(message);
@@ -90,19 +91,34 @@ int size = Display.getInstance().convertToPixels(6, true);
                     }
                     
                 }
+                        
+                        
                 
                 
                 );
+                
 
                 alert.add(cancel);
                 alert.add(ok);
                 alert.showDialog();
+                LocalNotification n = new LocalNotification();
+        n.setId("notification");
+        n.setAlertBody("Your Bike added ");
+        n.setAlertTitle("Succefull !!");
+          Display.getInstance().scheduleLocalNotification(
+                n,
+                System.currentTimeMillis() + 10 * 1000, // fire date/time
+                LocalNotification.REPEAT_MINUTE  // Whether to repeat and what frequency
+        );
                 
-                new ListMatiere(previous).show();
-              
+                
                 
              
             });
+            
+           
+                
+            
                        
                         
            System.out.println("");
@@ -116,6 +132,7 @@ int size = Display.getInstance().convertToPixels(6, true);
             }
           
         }
+        
      
     }
     

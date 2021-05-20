@@ -27,15 +27,16 @@ public class HomeForm extends Form {
         setLayout(BoxLayout.y());
 
         add(new Label("Choose an option"));
-        Button btnAddTask = new Button("Add Categorie");
-        Button btnListTasks = new Button("List categorie");
+        
         Button btnList = new Button("List matiere");
+        Button btnmail = new Button("Envoyer un email");
+        btnmail.addActionListener(e -> new Addmail(current).show());
             
 
-        btnAddTask.addActionListener(e -> new AddCatForm(current).show());
-        btnListTasks.addActionListener(e -> new ListcatForm(current).show());
+        //btnAddTask.addActionListener(e -> new AddCatForm(current).show());
+        //btnListTasks.addActionListener(e -> new ListcatForm(current).show());
         btnList.addActionListener(e -> new ListMatiere(current).show());
-        addAll(btnAddTask, btnListTasks, btnList);
+        addAll(btnList,btnmail);
 
     }
 
