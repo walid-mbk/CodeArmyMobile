@@ -18,8 +18,6 @@ import com.codename1.l10n.SimpleDateFormat;
 import com.codename1.ui.Button;
 import com.codename1.ui.Command;
 import com.codename1.ui.Component;
-import static com.codename1.ui.Component.BOTTOM;
-import static com.codename1.ui.Component.CENTER;
 import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.EncodedImage;
@@ -45,21 +43,21 @@ import java.util.ArrayList;
 public class QRCode extends Form{
  public QRCode(Form previous) {
 	 super(BoxLayout.y());
-	 
+
 	 String urlQR = "https://chart.googleapis.com/chart?cht=qr&chl=%22%20+%20stringQr%20+%20%22&choe=UTF-8&chs=500x500";
      Image blue = Image.createImage(500, 500, 0xff0000ff);
      EncodedImage enc = EncodedImage.createFromImage(blue, false);
      URLImage imgQR = URLImage.createToStorage(enc,  "Qr", urlQR);
-     
+
      ImageViewer imageQR = new ImageViewer(imgQR);
      Label sl=new Label("Votre QR Code:");
      addAll(sl,imageQR);
-     getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->{ 
+     getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->{
     	 OrganiserEventForm oe =new OrganiserEventForm();
-    	 previous.showBack(); 
+    	 previous.showBack();
     	 });
-	 
+
  }
-   
-    
+
+
  }

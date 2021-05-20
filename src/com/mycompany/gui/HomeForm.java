@@ -7,7 +7,6 @@ package com.mycompany.gui;
 
 import com.codename1.components.ScaleImageLabel;
 import com.codename1.ui.Button;
-import static com.codename1.ui.Component.BOTTOM;
 import com.codename1.ui.Display;
 import com.codename1.ui.Form;
 import com.codename1.ui.Image;
@@ -28,16 +27,16 @@ import com.codename1.ui.util.Resources;
 public class HomeForm extends BaseForm {
 
     Form current;
-    /*Garder traçe de la Form en cours pour la passer en paramètres 
+    /*Garder traçe de la Form en cours pour la passer en paramètres
     aux interfaces suivantes pour pouvoir y revenir plus tard en utilisant
     la méthode showBack*/
-    
+
     public HomeForm(Resources res) {
         Resources res1 = null;
         current = this; //Récupération de l'interface(Form) en cours
         setTitle("Home");
         setLayout(BoxLayout.y());
-       
+
            super.addSideMenu(res);
             Image img = res.getImage("fsd.jpg");
         if(img.getHeight() > Display.getInstance().getDisplayHeight() / 3) {
@@ -49,25 +48,25 @@ public class HomeForm extends BaseForm {
 
         Label facebook = new Label("786 followers", res.getImage("facebook-logo.png"), "BottomPad");
         Label twitter = new Label("486 followers", res.getImage("twitter-logo.png"), "BottomPad");
-        facebook.setTextPosition(BOTTOM);
-        twitter.setTextPosition(BOTTOM);
-        
+
+
         add(LayeredLayout.encloseIn(
                 sl
         ));
         add(new Label("Se dèrigeè vers :"));
         Button btnAddTask = new Button("wael");
         Button btnListTasks = new Button("walid");
-        Button btnListabo = new Button("el mnayek");
-        Button btnListat = new Button("hamza ");
+        Button btnListabo = new Button("Khalil");
+        Button btnhamza1= new Button("Espace Enseignant ");
         Button btnLid = new Button("dhia");
-        
-       
+
+
        // btnListTasks.addActionListener(e -> new ListPanierForm(current).show());
        // btnListabo.addActionListener(e -> new ListAbonnementForm(current).show());
        //  btnListat.addActionListener(e -> new statForm(current).show());
        //  btnLid.addActionListener(e -> new statForm(current).show());
-        addAll(btnAddTask, btnListTasks, btnListabo ,btnListat,btnLid);
+       btnhamza1.addActionListener(e -> new HomeEnseignant().show());
+        addAll(btnAddTask, btnListTasks, btnListabo ,btnhamza1,btnLid);
 
     }
 

@@ -15,8 +15,6 @@ import com.codename1.l10n.SimpleDateFormat;
 import com.codename1.ui.Button;
 import com.codename1.ui.Command;
 import com.codename1.ui.Component;
-import static com.codename1.ui.Component.BOTTOM;
-import static com.codename1.ui.Component.CENTER;
 import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.FontImage;
@@ -41,26 +39,26 @@ import java.util.ArrayList;
  */
 public class ListStage extends Form{
  public ListStage() {
-   
-    
+
+
 	   super(BoxLayout.y());
        setTitle("Liste des Stages");
         Toolbar tb = getToolbar();
         tb.setTitleCentered(false);
-      
-               
 
 
-       
+
+
+
                    ServiceStage spp=new ServiceStage();
                 ArrayList<Stage>pl=spp.getListalls();
            //  setupSideMenu();
-     
-            
-        
+
+
+
                      for(int iter = 0 ; iter < spp.getListalls().size() ; iter++) {
                          final Stage p=pl.get(iter);
-                       
+
                          MultiButton mb = new MultiButton();
                             SpanLabel sp1=new SpanLabel("email:"+ pl.get(iter).getEmail_societe());
                             SpanLabel sp2=new SpanLabel("pays:"+ pl.get(iter).getPays());
@@ -68,39 +66,39 @@ public class ListStage extends Form{
                             SpanLabel sp4=new SpanLabel("date_fin:"+ pl.get(iter).getDate_fin());
                            // MultiButton mb1 = new MultiButton();
                             Label nb= new Label("type_stage:"+p.getType_stage());
-                            Button btnpos=new Button("Postuler"); 
-                            Button btnconv=new Button("Demander Convention"); 
-                             
+                            Button btnpos=new Button("Postuler");
+                            Button btnconv=new Button("Demander Convention");
+
                          addAll(sp1,sp2,sp3,sp4,nb,btnconv,btnpos);
                           btnconv.addActionListener(new ActionListener() {
                               @Override
                               public void actionPerformed(ActionEvent ev) {
-                            	  
+
                                          convention c = new convention(p.getId());
                                          if (spp.demanderC(c)) {
                                         	 Dialog.show("Success","demande envoye",new Command("Obtenir QRCode"));
                                         	 ListStage ls=new ListStage();
                                         	 QRCode qc=new QRCode(ls);
                                         	 qc.show();
-                                             
-                                        	 
+
+
                                          };
-                                 
+
                                     }
                          });
-                          
+
                           btnpos.addActionListener(new ActionListener() {
                               @Override
                               public void actionPerformed(ActionEvent ev) {
-                            	  
+
                                          convention c = new convention(p.getId());
                                          if (spp.Postuler()) {
                                         	 Dialog.show("Success","Votre demande est en cours de traitement",new Command("OK"));
-                                             
-                                        	 
+
+
                                          };
-                                 
+
                                     }
                          });
-                       
+
                      }}}
